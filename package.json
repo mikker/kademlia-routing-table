@@ -22,8 +22,7 @@
   },
   "scripts": {
     "format": "prettier --write .",
-    "lint": "prettier --check .",
-    "test": "npm run lint && brittle test.js"
+    "test": "prettier --check . && npm run lint && brittle test.js"
   },
   "keywords": [
     "kademlia",
