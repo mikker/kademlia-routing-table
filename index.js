@@ -69,8 +69,7 @@ module.exports = class RoutingTable extends EventEmitter {
     const d = this._diff(id)
 
     // push close nodes
-    for (let i = d; i >= 0 && result.length < k; i--)
-      this._pushNodes(i, k, result)
+    for (let i = d; i >= 0 && result.length < k; i--) this._pushNodes(i, k, result)
 
     // if we don't have enough close nodes, populate from other rows, re the paper
     for (let i = d + 1; i < this.rows.length && result.length < k; i++)
@@ -181,8 +180,7 @@ class Row extends EventEmitter {
 
   insert(i, node) {
     this.nodes.push(node) // push node or null or whatevs, just trying to not be polymorphic
-    for (let j = this.nodes.length - 1; j > i; j--)
-      this.nodes[j] = this.nodes[j - 1]
+    for (let j = this.nodes.length - 1; j > i; j--) this.nodes[j] = this.nodes[j - 1]
     this.nodes[i] = node
     this.emit('add', node)
   }
