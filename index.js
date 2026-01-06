@@ -72,8 +72,9 @@ module.exports = class RoutingTable extends EventEmitter {
     for (let i = d; i >= 0 && result.length < k; i--) this._pushNodes(i, k, result)
 
     // if we don't have enough close nodes, populate from other rows, re the paper
-    for (let i = d + 1; i < this.rows.length && result.length < k; i++)
+    for (let i = d + 1; i < this.rows.length && result.length < k; i++) {
       this._pushNodes(i, k, result)
+    }
 
     return result
   }
